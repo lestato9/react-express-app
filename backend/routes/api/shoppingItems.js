@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     .find()
     .sort({ date: -1 })
     .then((items) => res.json(items))
-    .catch((err) => console.error(items));
+    .catch((err) => console.error(err));
 });
 
 // @route   POST api/shopping-items/create
@@ -33,8 +33,8 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
   ShoppingItem
     .findById(req.params.id)
-    .then((item) => item.remove().then(() => res.json({success: true})))
-    .catch((err) => res.status(404).json({success: false}))
+    .then((item) => item.remove().then(() => res.json({ success: true })))
+    .catch((err) => console.err(err), res.status(404).json({ success: false }))
 });
 
 
