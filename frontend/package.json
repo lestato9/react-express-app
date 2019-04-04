@@ -10,7 +10,6 @@
   "lint-staged": {
     "./src/**/*.(js|jsx)": [
       "npx eslint --ext .jsx --ext .js --fix",
-      "npm test",
       "git add"
     ]
   },
