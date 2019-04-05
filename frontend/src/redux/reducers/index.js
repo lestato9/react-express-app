@@ -1,1 +1,2 @@
-export { shoppingListItems } from './shoppingListItems';
+export { shoppingItems } from './shoppingItems';
+
