@@ -1,0 +1,13 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.truncate-text {
+  display: block; 
+  max-width: 100%;
+  text-overflow: ellipsis; 
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -8,7 +8,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import App from 'components/App';
 import { reducer } from "redux/reducer";
 
+import "semantic-ui-css/semantic.min.css";
 import "normalize.css";
+import "index.css";
 
 export const store = createStore(
   reducer,
