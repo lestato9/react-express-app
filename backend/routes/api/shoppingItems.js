@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 // @route   POST api/shopping-items/create
 // @desc    creates shopping item
 // @access  Public
-router.post('/', (req, res) => {
+router.post('/create', (req, res) => {
   const newItem = new ShoppingItem({
     name: req.body.name
   });
@@ -30,9 +30,9 @@ router.post('/', (req, res) => {
 // @route   DELETE api/shopping-items/delete
 // @desc    deletes shopping item
 // @access  Public
-router.delete('/:id', (req, res) => {
+router.delete('/delete', (req, res) => {
   ShoppingItem
-    .findById(req.params.id)
+    .findById(req.body.id)
     .then((item) => item.remove().then(() => res.json({ success: true })))
     .catch((err) => console.err(err), res.status(404).json({ success: false }))
 });
