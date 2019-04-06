@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
 const shoppingItemSchema = new Schema({
   name: {
@@ -8,7 +8,7 @@ const shoppingItemSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now
+    required: true
   }
 });
 

@@ -19,6 +19,12 @@ export const shoppingItems = (state = initialState, action) => {
         [action.name]: action.status
       };
 
+    case 'DELETE_SHOPPING_ITEM':
+      return {
+        ...state,
+        list: state.list.filter((el) => el._id !== action.id)
+      }
+
     default:
       return state;
   }

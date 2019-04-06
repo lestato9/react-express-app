@@ -10,10 +10,10 @@ export const api = {
     return axios.get(`/${endpoints.shoppingItemsList}`);
   },
   createShoppingItem(data) {
-    return axios.post(`/${endpoints.createShoppingItem}`, { data });
+    return axios.post(`/${endpoints.createShoppingItem}`, data);
   },
   deleteShoppingItem(id) {
-    return axios.delete(`/${endpoints.deleteShoppingItem}`, { id })
+    return axios.delete(`/${endpoints.deleteShoppingItem}/${id}`)
   }
 };
 

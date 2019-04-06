@@ -18,23 +18,32 @@ router.get('/', (req, res) => {
 // @access  Public
 router.post('/create', (req, res) => {
   const newItem = new ShoppingItem({
-    name: req.body.name
+    name: req.body.name,
+    date: req.body.date
   });
 
   newItem
     .save()
-    .then((item) => res.json(item))
-    .catch((err) => console.error(err))
+    .then(() => res.json({ success: true }))
+    .catch((err) => {
+      res.json({ success: false });
+      throw new Error(err);
+    })
 });
 
-// @route   DELETE api/shopping-items/delete
+// @route   DELETE api/shopping-items/delete/:id
 // @desc    deletes shopping item
 // @access  Public
-router.delete('/delete', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   ShoppingItem
-    .findById(req.body.id)
-    .then((item) => item.remove().then(() => res.json({ success: true })))
-    .catch((err) => console.err(err), res.status(404).json({ success: false }))
+    .findById(req.params.id)
+    .then((item) => {
+      item.remove().then(() => res.json({ success: true }))
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(404).json({ success: false });
+    })
 });
 
 

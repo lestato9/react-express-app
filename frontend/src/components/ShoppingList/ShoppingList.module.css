@@ -14,29 +14,3 @@
   margin-left: auto !important;
   margin-right: 0 !important;
 }
-
-.shoppingItem {
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-}
-
-.shoppingItemData {
-  width: calc(100% - 100px);
-  padding-right: 15px;
-}
-
-.shoppingItemData > b {
-  display: inline-block;
-  margin-bottom: 3px;
-}
-
-.shoppingItemControls {
-  margin-left: auto;
-  width: 100px;
-  text-align: right;
-}
-
-.shoppingListDelBtn {
-  margin-right: 0 !important;
-}

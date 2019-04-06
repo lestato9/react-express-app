@@ -1,0 +1,29 @@
+.shoppingItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.shoppingItemData {
+  width: calc(100% - 100px);
+  padding-right: 15px;
+}
+
+.shoppingItemData > b {
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+.shoppingItemData > div {
+  color: #95a5a6;
+}
+
+.shoppingItemControls {
+  margin-left: auto;
+  width: 100px;
+  text-align: right;
+}
+
+.shoppingItemDelBtn {
+  margin-right: 0 !important; 
+}

@@ -11,3 +11,18 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
+.regular-input-wrapper {}
+
+.regular-input-wrapper__label {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.regular-input-wrapper__error {
+  display: inline-block;
+  margin-left: 8px;
+  color: #e74c3c;
+  font-weight: bold;
+}
