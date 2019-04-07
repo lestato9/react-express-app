@@ -1,7 +1,7 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
-  "private": true,
+  "name": "shopping-list-react",
+  "version": "1.0.0",
+  "author": "Oleg Shcherbachenko",
   "proxy": "http://127.0.0.1:5000",
   "husky": {
     "hooks": {

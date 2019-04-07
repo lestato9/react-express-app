@@ -1,13 +1,13 @@
 {
-  "name": "backend",
+  "name": "shopping-list-express",
   "version": "1.0.0",
-  "description": "",
+  "description": "BE for shopping list",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=./ node index.js",
-    "dev": "NODE_PATH=./ nodemon index.js"
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
   },
-  "author": "",
+  "author": "Oleg Shcherbachenko",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
