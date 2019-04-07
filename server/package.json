@@ -1,0 +1,21 @@
+{
+  "name": "shopping-list-express",
+  "version": "1.0.0",
+  "description": "BE for shopping list",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_PATH=./ node index.js",
+    "start:dev": "NODE_PATH=./ nodemon index.js"
+  },
+  "author": "Oleg Shcherbachenko",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.21"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "nodemon": "^1.18.10"
+  }
+}

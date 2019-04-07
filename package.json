@@ -1,22 +1,12 @@
 {
-  "name": "shopping-list-express",
+  "name": "shopping-list",
   "version": "1.0.0",
-  "description": "BE for shopping list",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon index.js",
-    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
+    "start": "npm i --prefix server && npm start --prefix server",
+    "heroku-postbuild": "npm i --prefix client && npm run build --prefix ../client"
   },
   "author": "Oleg Shcherbachenko",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "mongoose": "^5.4.21"
-  },
-  "devDependencies": {
-    "eslint": "^5.16.0",
-    "nodemon": "^1.18.10"
-  }
+  "license": "ISC"
 }

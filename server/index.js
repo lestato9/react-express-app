@@ -10,11 +10,11 @@ const app = express();
 app.use(bodyParser.json());
 // define api routing here
 app.use('/api/shopping-items', shoppingItems);
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // send static assets
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 mongoose
