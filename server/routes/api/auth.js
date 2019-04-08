@@ -1,6 +1,9 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const keys = require('config/keys');
 const User = require(`models/User`);
+
 const router = express.Router();
 
 // @route   POST api/auth/signup
@@ -33,19 +36,22 @@ router.post('/signup', (req, res) => {
                 .then((user) => {
                   res.json(user);
                 })
-                .catch(() => {
+                .catch((err) => {
                   res.status(500).end();
                   console.error('Failed to save new user');
+                  throw err;
                 })
             })
-            .catch(() => {
+            .catch((err) => {
               res.status(500).end();
               console.error('Failed to create hash from password');
+              throw err;
             })
         })
-        .catch(() => {
+        .catch((err) => {
           res.status(500).end();
           console.error('Failed to generate salt');
+          throw err;
         });
 
     })
@@ -70,14 +76,29 @@ router.post('/login', (req, res) => {
       bcrypt.hash(password, user.salt)
         .then((hash) => {
           if (hash === user.password) {
-            res.json({ loggedIn: true });
+            jwt.sign(
+              { id: user.id },
+              keys.jwtSecret,
+              { expiresIn: 3600 },
+              (err, token) => {
+                if (err) {
+                  console.error('Failed to generate hash');
+                  res.status(500).end();
+                  throw err;
+                } else {
+                  res
+                    .cookie('token', token, { httpOnly: true })
+                    .json({ success: true });
+                }
+              }
+            )
           } else {
-            res.status(400).json({ msg: 'Invalid credentials' })
+            res.status(400).json({ msg: 'Invalid password' });
           }
         })
-        .catch((() => {
-          res.status(500).end();
-          console.error('Failed to generate hash');
+        .catch(((err) => {
+          console.log('Failed to generate hash');
+          throw err;
         }))
     })
 });
