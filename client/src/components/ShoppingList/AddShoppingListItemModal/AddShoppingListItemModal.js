@@ -22,12 +22,7 @@ export const _AddShoppingListItemModal = ({ isModalVisible, closeModal, createSh
         <Formik
           initialValues={{ name: '' }}
           onSubmit={(values) => {
-            const extendedValues = {
-              ...values,
-              date: Date.now()
-            };
-
-            createShoppingItem(extendedValues);
+            createShoppingItem(values);
             closeModal();
           }}
           validationSchema={Yup.object().shape({

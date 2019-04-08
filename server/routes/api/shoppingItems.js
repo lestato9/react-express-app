@@ -18,8 +18,7 @@ router.get('/', (req, res) => {
 // @access  Public
 router.post('/create', (req, res) => {
   const newItem = new ShoppingItem({
-    name: req.body.name,
-    date: req.body.date
+    name: req.body.name
   });
 
   newItem
