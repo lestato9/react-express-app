@@ -72,7 +72,7 @@ router.post('/login', (req, res) => {
           if (hash === user.password) {
             res.json({ loggedIn: true });
           } else {
-            res.status(401).json({ msg: 'Invalid credentials' })
+            res.status(400).json({ msg: 'Invalid credentials' })
           }
         })
         .catch((() => {
