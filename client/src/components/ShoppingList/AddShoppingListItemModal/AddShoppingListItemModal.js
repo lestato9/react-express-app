@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
 
-import { t_createShoppingItem } from 'redux/actions';
+import { t_createShoppingItem } from 'redux/thunks';
 
 import styles from './AddShoppingListItemModal.module.css';
 

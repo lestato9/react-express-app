@@ -4,7 +4,7 @@ import { List, Button } from 'semantic-ui-react';
 
 import { ShoppingListItem } from './ShoppingListItem/ShoppingListItem';
 import { AddShoppingListItemModal } from './AddShoppingListItemModal/AddShoppingListItemModal';
-import { t_getShoppingItems } from 'redux/actions';
+import { t_getShoppingItems } from 'redux/thunks';
 
 import styles from './ShoppingList.module.css';
 

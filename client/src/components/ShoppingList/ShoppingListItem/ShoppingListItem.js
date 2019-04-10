@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import { List, Button, Icon } from 'semantic-ui-react';
 
-import { t_deleteShoppingItem } from 'redux/actions';
+import { t_deleteShoppingItem } from 'redux/thunks';
 
 import styles from './ShoppingListItem.module.css';
 
