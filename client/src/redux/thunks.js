@@ -1,4 +1,5 @@
 import { api } from 'services/api/api';
+import { toast } from 'react-toastify';
 import { a_storeShoppingItems, a_setShoppingItemsStatus, a_deleteShoppingItem } from 'redux/actions';
 
 export const t_getShoppingItems = () => (dispatch) => {
@@ -11,7 +12,7 @@ export const t_getShoppingItems = () => (dispatch) => {
     })
     .catch((err) => {
       dispatch(a_setShoppingItemsStatus('isErrored', true));
-      throw new Error(err);
+      toast.error('Failed to fetch shopping items');
     })
     .finally(() => {
       dispatch(a_setShoppingItemsStatus('isLoading', false));
@@ -23,12 +24,13 @@ export const t_deleteShoppingItem = (id) => (dispatch) => {
     .then((res) => {
       if (res.data.success) {
         dispatch(a_deleteShoppingItem(id));
+        toast.success('Successfully deleted shopping item');
       } else {
-        throw new Error('Server failed to delete shopping item');
+        throw new Error('Failed to delete shopping item');
       }
     })
-    .catch((err) => {
-      throw new Error('Cannot delete shopping item');
+    .catch(() => {
+      toast.error('Failed to delete shopping item');
     })
 };
 
@@ -37,11 +39,12 @@ export const t_createShoppingItem = (data) => (dispatch) => {
     .then((res) => {
       if (res.data.success) {
         dispatch(t_getShoppingItems());
+        toast.success('Successfully created shopping item');
       } else {
-        throw new Error('Server failed to create shopping item');
+        throw new Error('Failed to create shopping item');
       }
     })
-    .catch((err) => {
-      throw new Error('Cannot create shopping item');
+    .catch(() => {
+      toast.error('Failed to create shopping item');
     })
 };
