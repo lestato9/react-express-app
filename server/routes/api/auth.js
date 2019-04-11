@@ -38,20 +38,17 @@ router.post('/signup', (req, res) => {
                 })
                 .catch((err) => {
                   res.status(500).end();
-                  console.error('Failed to save new user');
-                  throw err;
+                  console.error(err.name, err.message);
                 })
             })
             .catch((err) => {
               res.status(500).end();
-              console.error('Failed to create hash from password');
-              throw err;
+              console.error(err.name, err.message);
             })
         })
         .catch((err) => {
           res.status(500).end();
-          console.error('Failed to generate salt');
-          throw err;
+          console.error(err.name, err.message);
         });
 
     })
@@ -82,12 +79,11 @@ router.post('/login', (req, res) => {
               { expiresIn: 3600 },
               (err, token) => {
                 if (err) {
-                  console.error('Failed to generate hash');
+                  console.error(err.name, err.message);
                   res.status(500).end();
-                  throw err;
                 } else {
                   res
-                    .cookie('token', token, { httpOnly: true })
+                    .cookie('appToken', token, { httpOnly: true })
                     .json({ success: true });
                 }
               }
@@ -97,8 +93,8 @@ router.post('/login', (req, res) => {
           }
         })
         .catch(((err) => {
-          console.log('Failed to generate hash');
-          throw err;
+          console.log(err.name, err.message);
+          res.status(500).end();
         }))
     })
 });
