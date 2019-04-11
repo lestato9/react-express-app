@@ -1,32 +1,28 @@
-const privateRoutes = 'config/privateRoutes';
 const { jwtSecret } = require('config/keys');
 const jwt = require('jsonwebtoken');
 const User = require(`models/User`);
 
 function requireAuth(req, res, next) {
-  if (!privateRoutes.includes(req.url)) next();
-  if (!req.cookies.appToken) {
-    res.status(401).end();
-    return;
+  if (!req.cookies.token) {
+    return res.status(401).end();
   }
 
-  jwt.verify(req.cookies.appToken, jwtSecret, (err, decoded) => {
+  jwt.verify(req.cookies.token, jwtSecret, (err, decoded) => {
     if (err) {
       console.error(err.name, err.message);
-      res.status(401).end();
-      return;
+      return res.status(401).end();
     }
 
     User
       .findById(decoded.id)
       .then((user) => {
         if (!user) throw new Error('Cannot find user with id extracted from JWT token');
-        // if there is user with id from token, everyhting is OK 
+        // success
         next();
       })
-      .catch((err) => {
-        console.error(err.name, err.message);
-        res.status(401).end();
+      .catch(({ name, message }) => {
+        console.error(name, message);
+        return res.status(401).end();
       })
   });
 

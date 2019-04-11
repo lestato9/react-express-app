@@ -1,0 +1,25 @@
+.loginPage {}
+
+.loginPage :global(.regular-input-wrapper__error) {
+  margin-left: 0;
+  margin-top: 2px;
+}
+
+.loginPageInner {
+  padding-top: 30px;
+  max-width: 375px;
+  margin: auto;
+}
+
+.formActions {
+  padding-top: 15px;
+  text-align: center;
+}
+
+.getAccount {
+  margin-top: 20px;
+}
+
+.getAccountText {
+  margin-bottom: 5px;
+}

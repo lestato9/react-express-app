@@ -12,7 +12,9 @@
   white-space: nowrap;
 }
 
-.regular-input-wrapper {}
+.regular-input-wrapper {
+  margin-bottom: 10px;
+}
 
 .regular-input-wrapper__label {
   display: inline-block;

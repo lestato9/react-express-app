@@ -1,6 +1,30 @@
 import { api } from 'services/api/api';
+import { history } from 'index';
+import { routes } from 'config';
 import { toast } from 'react-toastify';
-import { a_storeShoppingItems, a_setShoppingItemsStatus, a_deleteShoppingItem } from 'redux/actions';
+import {
+  a_storeUserData,
+  a_storeUserField,
+  a_storeShoppingItems,
+  a_setShoppingItemsStatus,
+  a_deleteShoppingItem
+} from 'redux/actions';
+
+
+export const t_login = (data) => (dispatch) => {
+  api.login(data)
+    .then((res) => {
+      if (res && res.data) {
+        dispatch(a_storeUserData(res.data));
+        dispatch(a_storeUserField('isAuthorized', true));
+        history.push(routes.dashboard.path);
+      }
+    })
+    .catch(({ name, message }) => {
+      console.error(name, message);
+      dispatch(a_storeUserField('isAuthorized', false));
+    })
+}
 
 export const t_getShoppingItems = () => (dispatch) => {
   dispatch(a_setShoppingItemsStatus('isLoading', true));

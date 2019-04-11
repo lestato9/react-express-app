@@ -57,7 +57,6 @@ export const _AddShoppingListItemModal = ({ isModalVisible, closeModal, createSh
                   <Button
                     type="submit"
                     content="Add"
-                    disabled={!!Object.keys(errors).length}
                     positive
                   />
                 </div>

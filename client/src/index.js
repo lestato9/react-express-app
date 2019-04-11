@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { createBrowserHistory } from 'history';
 import thunk from 'redux-thunk';
 import { toast } from 'react-toastify';
 
-import App from 'components/App';
+import { App } from 'components/App';
 import { reducer } from "redux/reducer";
 
 import "semantic-ui-css/semantic.min.css";
@@ -27,11 +28,14 @@ export const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
+// configure react-router history
+export const history = createBrowserHistory();
+
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <App />
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById("root")
 );

@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     .find()
     .sort({ date: -1 })
     .then((items) => res.json(items))
-    .catch((err) => console.error(err));
+    .catch(({ name, message }) => console.error(name, message));
 });
 
 // @route   POST api/shopping-items/create
@@ -24,9 +24,9 @@ router.post('/create', (req, res) => {
   newItem
     .save()
     .then(() => res.json({ success: true }))
-    .catch((err) => {
+    .catch(({ name, message }) => {
       res.json({ success: false });
-      throw new Error(err);
+      console.error(name, message)
     })
 });
 
@@ -39,9 +39,9 @@ router.delete('/delete/:id', (req, res) => {
     .then((item) => {
       item.remove().then(() => res.json({ success: true }))
     })
-    .catch((err) => {
-      console.error(err);
+    .catch(({ name, message }) => {
       res.status(404).json({ success: false });
+      console.error(name, message);
     })
 });
 

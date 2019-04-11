@@ -76,15 +76,15 @@ router.post('/login', (req, res) => {
             jwt.sign(
               { id: user.id },
               keys.jwtSecret,
-              { expiresIn: 3600 },
+              { expiresIn: 7200 },
               (err, token) => {
                 if (err) {
                   console.error(err.name, err.message);
                   res.status(500).end();
                 } else {
                   res
-                    .cookie('appToken', token, { httpOnly: true })
-                    .json({ success: true });
+                    .cookie('token', token)
+                    .json(user);
                 }
               }
             )

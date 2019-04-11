@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
-import { shoppingItems } from './reducers';
+import { shoppingItems, user } from './reducers';
 
 export const reducer = combineReducers({
-  shoppingItems
+  shoppingItems,
+  user
 });
 
