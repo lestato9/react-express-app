@@ -43,6 +43,7 @@ export const _AddShoppingListItemModal = ({ isModalVisible, closeModal, createSh
                     onChange={handleChange}
                     onBlur={handleBlur}
                     error={errors.name && touched.name}
+                    autoFocus
                   />
                   {errors.name && touched.name && (
                     <span className="regular-input-wrapper__error">

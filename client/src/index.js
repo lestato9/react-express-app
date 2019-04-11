@@ -17,7 +17,7 @@ import "index.css";
 
 // configure notifications lib
 toast.configure({
-  autoClose: 2500
+  autoClose: 2000
 });
 
 // configure store
