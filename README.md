@@ -1,3 +1,3 @@
 # xtended-todo-app
-To run api server, go to server and run npm start
-To run frontend go to client and run npm start
+To run <b>API server</b>, go to server folder and run <code>npm start</code><br/>
+To run <b>Frontend</b> go to client folder and run <code>npm start</code>
