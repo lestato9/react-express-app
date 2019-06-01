@@ -47,7 +47,7 @@ export const _App = (props) => {
         }
         {
           Object.entries(redirects).map(
-            ([key, value]) => <Redirect from={key} to={value} />
+            ([key, value]) => <Redirect key={key} from={key} to={value} />
           )
         }
         <Route component={NotFound}></Route>
