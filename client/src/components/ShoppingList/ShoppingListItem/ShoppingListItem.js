@@ -17,7 +17,7 @@ export const _ShoppingListItem = ({ _id, name, date, deleteShoppingItem }) => {
       <div className={styles.shoppingItem}>
         <div className={styles.shoppingItemData}>
           <b className="truncate-text">{name}</b>
-          <div className="truncate-text">{moment(date).format('DD.MM.YY hh:mm:ss')}</div>
+          <div className="truncate-text">{moment(date).format('DD.MM.YY HH:mm:ss')}</div>
         </div>
         <div className={styles.shoppingItemControls}>
           <Button

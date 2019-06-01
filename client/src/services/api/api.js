@@ -12,7 +12,7 @@ http.interceptors.response.use((response) => response, (err) => {
     }
   }
 
-  return err;
+  throw err;
 })
 
 // can be used to define actual url
