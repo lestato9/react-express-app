@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { SmartRoute } from 'components/SmartRoute/SmartRoute';
 import { NotFound } from 'routes/NotFound/NotFound';
 import { history } from 'index';
-import { routes } from 'config';
+import { routes, redirects } from 'config';
 import { a_storeUserField } from 'redux/actions';
 
 import styles from './App.module.css';
@@ -43,6 +43,11 @@ export const _App = (props) => {
         {
           Object.entries(routes).map(
             ([key, value]) => <SmartRoute key={key} {...value} isAuthorized={isAuthorized} />
+          )
+        }
+        {
+          Object.entries(redirects).map(
+            ([key, value]) => <Redirect from={key} to={value} />
           )
         }
         <Route component={NotFound}></Route>
