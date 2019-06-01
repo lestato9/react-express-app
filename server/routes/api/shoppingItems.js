@@ -4,7 +4,7 @@ const router = express.Router();
 
 // @route   GET api/shopping-items
 // @desc    get all shopping items
-// @access  Public
+// @access  Private
 router.get('/', (req, res) => {
   ShoppingItem
     .find()
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 // @route   POST api/shopping-items/create
 // @desc    creates shopping item
-// @access  Public
+// @access  Private
 router.post('/create', (req, res) => {
   const newItem = new ShoppingItem({
     name: req.body.name
@@ -32,7 +32,7 @@ router.post('/create', (req, res) => {
 
 // @route   DELETE api/shopping-items/delete/:id
 // @desc    deletes shopping item
-// @access  Public
+// @access  Private
 router.delete('/delete/:id', (req, res) => {
   ShoppingItem
     .findById(req.params.id)
