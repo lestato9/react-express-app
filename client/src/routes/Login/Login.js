@@ -14,9 +14,7 @@ const mapDispatchToProps = {
   login: t_login
 }
 
-export const _Login = (props) => {
-  const { login } = props;
-
+export const _Login = ({ login }) => {
   return (
     <div className={styles.loginPage}>
       <div className="container">

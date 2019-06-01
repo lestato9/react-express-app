@@ -20,9 +20,22 @@ export const t_login = (data) => (dispatch) => {
         history.push(routes.dashboard.path);
       }
     })
-    .catch(({ name, message }) => {
-      console.error(name, message);
+    .catch(({ response }) => {
       dispatch(a_storeUserField('isAuthorized', false));
+      toast.error(response.data.msg);
+    })
+}
+
+export const t_signup = (data) => (dispatch) => {
+  api.signup(data)
+    .then((res) => {
+      if (res && res.data) {
+        history.push(routes.login.path);
+        toast.success('Success! Now login using your name & password');
+      }
+    })
+    .catch(({ response }) => {
+      toast.error(response.data.msg);
     })
 }
 

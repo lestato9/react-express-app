@@ -1,0 +1,17 @@
+.signupPage {}
+
+.signupPage :global(.regular-input-wrapper__error) {
+  margin-left: 0;
+  margin-top: 2px;
+}
+
+.signupPageInner {
+  padding-top: 30px;
+  max-width: 375px;
+  margin: auto;
+}
+
+.formActions {
+  padding-top: 15px;
+  text-align: center;
+}
