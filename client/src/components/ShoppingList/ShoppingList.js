@@ -5,6 +5,7 @@ import { List, Button } from 'semantic-ui-react';
 import { ShoppingListItem } from './ShoppingListItem/ShoppingListItem';
 import { AddShoppingListItemModal } from './AddShoppingListItemModal/AddShoppingListItemModal';
 import { t_getShoppingItems } from 'redux/thunks';
+import { getPropSafe } from 'helpers';
 
 import styles from './ShoppingList.module.css';
 
@@ -29,16 +30,19 @@ export const _ShoppingList = ({ shoppingItems, getShoppingItems }) => {
     <>
       <List verticalAlign='middle' divided>
         <List.Header className={styles.shoppingListHeader}>
-          <h1>Your shopping list</h1>
+          <div>
+            <h1>Your shopping list</h1>
+            <div>List is common and free to edit for anyone logged in, so I'm not responsible for its content</div>
+          </div>
           <Button
             onClick={openModal}
             className={styles.shoppingListAddBtn}
             color="blue"
             icon="add square"
-            compact
+            content="Add"
           />
         </List.Header>
-        {shoppingItems.list.map((item) => <ShoppingListItem key={item._id} {...item} />)}
+        {getPropSafe(() => shoppingItems.list, []).map((item) => <ShoppingListItem key={item._id} {...item} />)}
       </List>
 
       <AddShoppingListItemModal
